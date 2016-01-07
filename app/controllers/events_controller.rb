@@ -4,7 +4,12 @@ class EventsController < ApplicationController
   # GET /events
   # GET /events.json
   def index
-    @events = Event.all
+    # full_calendar will hit the index method with query parameters
+    # 'start' and 'end' in order to filter the results for the
+    # appropriate month/week/day.  It should be possiblt to change
+    # this to be starts_at and ends_at to match rails conventions.
+    # I'll eventually do that to make the demo a little cleaner.
+    @events = Event.scoped
   end
 
   # GET /events/1
